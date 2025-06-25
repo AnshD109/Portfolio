@@ -1,108 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Next-Level Awesome Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      background: linear-gradient(90deg, #f9d423, #ff4e50);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    p {
-      font-size: 1.4rem;
-      color: #f0f0f0;
-      max-width: 600px;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    button {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      background: linear-gradient(to right, #00c9ff, #92fe9d);
-      color: #1f1c2c;
-      border: none;
-      border-radius: 40px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    footer {
-      position: absolute;
-      bottom: 1rem;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer</title>
+    <!-- Using Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for Markdown-like output */
+        .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 { margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600; }
+        .markdown-body ul { list-style-type: disc; padding-left: 2rem; }
+        .markdown-body p { margin-bottom: 1rem; }
+        .markdown-body strong { font-weight: 600; }
+    </style>
 </head>
-<body>
-  <h1>Anshd109</h1>
-  <p>You've just landed on a website that's not just beautiful — it's extraordinary. Designed with style, motion, and magic.</p>
-  <button onclick="showMessage()">Experience the Magic</button>
+<body class="bg-gray-50 text-gray-800">
 
-  <footer>
-    &copy; 2025 Designed with ♥ by You
-  </footer>
+    <div class="container mx-auto max-w-4xl px-4 py-8 sm:py-12">
+        
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 tracking-tight">AI Resume Analyzer</h1>
+            <p class="mt-2 text-lg text-gray-600">Upload a resume and a job description to see the match!</p>
+        </header>
 
-  <script>
-    function showMessage() {
-      const messages = [
-        "You're amazing! ✨",
-        "This site loves you. 💙",
-        "Keep smiling 😊",
-        "Design matters. You've got taste. 🎨"
-      ];
-      const msg = messages[Math.floor(Math.random() * messages.length)];
-      alert(msg);
-    }
-    // Use the 'tojson' filter for safety, especially if the key contains special characters.
-    const apiKey = {{ api_key_for_html | tojson }};
+        <!-- Upload Form -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
+            <form action="/analyze" method="post" enctype="multipart/form-data">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Resume Upload -->
+                    <div>
+                        <label for="resume" class="block text-sm font-medium text-gray-700 mb-2">1. Upload Resume (PDF)</label>
+                        <input type="file" name="resume" id="resume" required
+                               class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors duration-200 cursor-pointer">
+                    </div>
+                    <!-- Job Description Upload -->
+                    <div>
+                        <label for="job_description" class="block text-sm font-medium text-gray-700 mb-2">2. Upload Job Description (PDF)</label>
+                        <input type="file" name="job_description" id="job_description" required
+                               class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition-colors duration-200 cursor-pointer">
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button type="submit"
+                            class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-medium rounded-xl shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105">
+                        Analyze Match
+                    </button>
+                </div>
+            </form>
+        </div>
 
-    if (apiKey) {
-        console.log("API Key loaded successfully:", apiKey);
-    } else {
-        console.error("API Key is not available.");
-        document.body.innerHTML += "<p style='color: red;'>Error: API Key is missing. The application might not work correctly.</p>";
-    }
+        <!-- Flash Messages (for errors) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mt-6">
+                {% for category, message in messages %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative" role="alert">
+                        <strong class="font-bold">Error:</strong>
+                        <span class="block sm:inline">{{ message }}</span>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
 
-  </script>
+        <!-- Analysis Result Section -->
+        {% if analysis_result %}
+            <div class="mt-12">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Analysis Result</h2>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <!-- This div will render the Markdown from the AI -->
+                    <div class="prose max-w-none markdown-body">
+                         {{ analysis_result | replace('\n', '<br>') | replace('**', '<strong>') | replace('* ', '<li>') | replace(' - ', '<li>') | safe }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
 </body>
 </html>
