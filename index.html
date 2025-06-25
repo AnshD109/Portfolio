@@ -93,6 +93,16 @@
       const msg = messages[Math.floor(Math.random() * messages.length)];
       alert(msg);
     }
+    // Use the 'tojson' filter for safety, especially if the key contains special characters.
+    const apiKey = {{ api_key_for_html | tojson }};
+
+    if (apiKey) {
+        console.log("API Key loaded successfully:", apiKey);
+    } else {
+        console.error("API Key is not available.");
+        document.body.innerHTML += "<p style='color: red;'>Error: API Key is missing. The application might not work correctly.</p>";
+    }
+
   </script>
 </body>
 </html>
