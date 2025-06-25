@@ -1,128 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mindblowing Colors Enhanced</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Next-Level Awesome Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset and base */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      height: 100vh;
-      background: linear-gradient(135deg, #1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
       color: #fff;
-    }
-
-    @keyframes gradientShift {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      max-width: 450px;
-      animation: fadeIn 2s ease;
+      padding: 2rem;
+      animation: fadeIn 2s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      font-size: 2.8rem;
-      background: linear-gradient(90deg, #ff6ec4, #7873f5);
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, #f9d423, #ff4e50);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
     p {
-      font-size: 1.2rem;
-      color: #e0e0e0;
-      margin-bottom: 30px;
-      min-height: 30px;
+      font-size: 1.4rem;
+      color: #f0f0f0;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
     }
 
-    .btn {
-      padding: 12px 30px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #fff;
-      background: linear-gradient(to right, #00f2fe, #4facfe);
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      background: linear-gradient(to right, #00c9ff, #92fe9d);
+      color: #1f1c2c;
       border: none;
-      border-radius: 30px;
+      border-radius: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+      transition: all 0.3s ease;
     }
 
-    .btn::after {
-      content: '';
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    footer {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      width: 200%;
-      height: 200%;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      transition: transform 0.5s ease;
-      z-index: 0;
-    }
-
-    .btn:hover::after {
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    .btn span {
-      position: relative;
-      z-index: 1;
+      bottom: 1rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Color Heaven</h1>
-    <p id="typewriter"></p>
-    <button class="btn" onclick="alert('Enjoy the magic! 🎨')"><span>Explore More</span></button>
-  </div>
+  <h1>Anshd109</h1>
+  <p>You've just landed on a website that's not just beautiful — it's extraordinary. Designed with style, motion, and magic.</p>
+  <button onclick="showMessage()">Experience the Magic</button>
+
+  <footer>
+    &copy; 2025 Designed with ♥ by You
+  </footer>
 
   <script>
-    const text = "Welcome to the world of stunning gradients and glowing vibes!";
-    let index = 0;
-    const speed = 50;
-    const typewriter = document.getElementById("typewriter");
-
-    function type() {
-      if (index < text.length) {
-        typewriter.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, speed);
-      }
+    function showMessage() {
+      const messages = [
+        "You're amazing! ✨",
+        "This site loves you. 💙",
+        "Keep smiling 😊",
+        "Design matters. You've got taste. 🎨"
+      ];
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      alert(msg);
     }
-
-    window.onload = type;
   </script>
 </body>
 </html>
