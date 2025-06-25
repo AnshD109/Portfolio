@@ -21,7 +21,7 @@ def home():
     return render_template('index.html', api_key_for_html=api_key)
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=10000)
 
 resume_path = input("Enter the path to your RESUME PDF file: ")
 job_path = input("Enter the path to the JOB DESCRIPTION PDF file: ")
