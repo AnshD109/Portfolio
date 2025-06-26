@@ -12,27 +12,124 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            /* The main background color */
+            background-color: #0c0a18; 
+            overflow-x: hidden;
+            /* NEW: Added animation for background color change */
+            animation: change-bg-color 30s infinite alternate;
         }
-        /* Style for Markdown-like output */
+
+        /* --- Animated Background --- */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place it behind all other content */
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            /* The blur effect is key to the soft look */
+            filter: blur(80px);
+            opacity: 0.6;
+        }
+
+        /* Define the blobs with different sizes, colors, and positions */
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            top: -150px;
+            left: -150px;
+            background: rgba(87, 83, 221, 0.5);
+            animation: move-1 20s infinite alternate;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            right: -100px;
+            background: rgba(221, 83, 137, 0.5);
+            animation: move-2 25s infinite alternate;
+        }
+
+        .blob-3 {
+            width: 250px;
+            height: 250px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(83, 199, 221, 0.5);
+            animation: move-3 15s infinite alternate;
+        }
+
+        /* --- Keyframe Animations for the Blobs --- */
+        @keyframes move-1 {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(200px, 100px) scale(1.2); }
+        }
+
+        @keyframes move-2 {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(-150px, -50px) scale(0.8); }
+        }
+
+        @keyframes move-3 {
+            from { transform: rotate(0deg) translateX(50px) scale(1); }
+            to { transform: rotate(360deg) translateX(50px) scale(1.1); }
+        }
+
+        /* NEW: Keyframe Animation for Background Color */
+        @keyframes change-bg-color {
+            0% {
+                background-color: #0c0a18;
+            }
+            50% {
+                background-color: #1a1a2e;
+            }
+            100% {
+                background-color: #2a1a3e;
+            }
+        }
+
+
+        /* --- Styles for your content --- */
+        .content-container {
+            position: relative;
+            z-index: 1;
+        }
+        
         .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 { margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600; }
         .markdown-body ul { list-style-type: disc; padding-left: 2rem; }
         .markdown-body p { margin-bottom: 1rem; }
         .markdown-body strong { font-weight: 600; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
-    <div class="container mx-auto max-w-4xl px-4 py-8 sm:py-12">
+    <!-- The simple animated background container -->
+    <div class="background-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Your original content goes here -->
+    <div class="content-container container mx-auto max-w-4xl px-4 py-8 sm:py-12">
         
         <!-- Header -->
         <header class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-900 tracking-tight">AI Resume Analyzer</h1>
-            <p class="mt-2 text-lg text-gray-600">Upload a resume and a job description to see the match!</p>
+            <h1 class="text-4xl font-bold text-white tracking-tight">AI Resume Analyzer</h1>
+            <p class="mt-2 text-lg text-gray-300">Upload a resume and a job description to see the match!</p>
         </header>
 
         <!-- Upload Form -->
-        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
-            <form action="/analyze" method="post" enctype="multipart/form-data">
+        <div class="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-white/20">
+            <form id="analyzer-form">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Resume Upload -->
                     <div>
@@ -56,32 +153,16 @@
             </form>
         </div>
 
-        <!-- Flash Messages (for errors) -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="mt-6">
-                {% for category, message in messages %}
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative" role="alert">
-                        <strong class="font-bold">Error:</strong>
-                        <span class="block sm:inline">{{ message }}</span>
-                    </div>
-                {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-
         <!-- Analysis Result Section -->
-        {% if analysis_result %}
-            <div class="mt-12">
-                <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Analysis Result</h2>
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
-                    <!-- This div will render the Markdown from the AI -->
-                    <div class="prose max-w-none markdown-body">
-                         {{ analysis_result | replace('\n', '<br>') | replace('**', '<strong>') | replace('* ', '<li>') | replace(' - ', '<li>') | safe }}
-                    </div>
-                </div>
-            </div>
-        {% endif %}
+        <div id="analysis-result-container" class="mt-12 hidden">
+             <h2 class="text-3xl font-bold text-white text-center mb-6">Analysis Result</h2>
+             <div class="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-white/20">
+                 <!-- This div will render the Markdown from the AI -->
+                 <div class="prose max-w-none markdown-body text-gray-800" id="analysis-result-content">
+                    <!-- Results will be injected here by your application logic -->
+                 </div>
+             </div>
+         </div>
 
     </div>
 
