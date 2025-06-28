@@ -9,7 +9,7 @@ export default function Page() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      Hello, I'm [Your Name]
+      Hello i am ansh
     </motion.h1>
   );
 }
