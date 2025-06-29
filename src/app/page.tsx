@@ -9,7 +9,7 @@ export default function Page() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      Hello
+      opening soon
     </motion.h1>
   );
 }
