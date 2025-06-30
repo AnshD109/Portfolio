@@ -1,25 +1,167 @@
-body {
-    font-family: sans-serif;
+/* --- Basic Reset & Global Styles --- */
+* {
     margin: 0;
-    background-color: #111;
-    color: #fff;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-section {
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #EAEAEA;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content */
+    padding: 0 2rem;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    padding: 1rem 2rem;
     display: flex;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    color: #EAEAEA;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007BFF;
+}
+
+.contact-button {
+    background-color: #007BFF;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+.contact-button:hover {
+    color: #EAEAEA;
+    background-color: #0056b3;
+}
+
+
+/* --- Sections General Styling --- */
+section {
+    padding: 6rem 0; /* Add space between sections */
+    border-top: 1px solid #333;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh; /* vh = viewport height */
+    text-align: center;
+    border-top: none;
 }
 
-h1, h2 {
+.main-title {
     font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+.second-line {
+    color: #777;
 }
 
-/* --- Animation State --- */
-/* This is where the element is BEFORE the animation starts */
-/* We push it down 50px and make it invisible */
-.animated-title {
-    transform: translateY(50px);
-    opacity: 0;
+.hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1.5rem auto 0 auto;
+    color: #aaa;
+}
+
+
+/* --- Projects Section --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    color: #aaa;
+    margin-bottom: 1.5rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: #333;
+    color: #00BFFF; /* Deep sky blue for tags */
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+/* --- About Section --- */
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid #333;
+}
+
+.main-footer a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 700;
+}
+.main-footer a:hover {
+    text-decoration: underline;
 }
