@@ -1,0 +1,25 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #111;
+    color: #fff;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* vh = viewport height */
+}
+
+h1, h2 {
+    font-size: 4rem;
+}
+
+/* --- Animation State --- */
+/* This is where the element is BEFORE the animation starts */
+/* We push it down 50px and make it invisible */
+.animated-title {
+    transform: translateY(50px);
+    opacity: 0;
+}
