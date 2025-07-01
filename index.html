@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Data Analyst Portfolio</title>
+    <meta name="description" content="Ansh Dankhara - Data Analyst Portfolio showcasing data projects, dashboards, and visual insights.">
+    <meta property="og:title" content="Ansh Dankhara | Data Analyst Portfolio">
+    <meta property="og:description" content="Explore Ansh's data analytics projects and skills in Python, SQL, Power BI, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/preview.png">
+    <title>Ansh Dankhara | Data Analyst Portfolio</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div class="progress-bar"></div>
+
     <header class="main-header">
         <nav>
             <a href="#hero" class="nav-link">Home</a>
             <a href="#projects" class="nav-link">Projects</a>
+            <a href="#skills" class="nav-link">Skills</a>
             <a href="#about" class="nav-link">About</a>
+            <a href="#resume" class="nav-link">Resume</a>
             <a href="#contact" class="nav-link contact-button">Contact</a>
         </nav>
     </header>
@@ -30,46 +40,32 @@
         <section id="projects" class="projects-section">
             <h2 class="section-title">My Projects</h2>
             <div class="project-grid">
+                <!-- Existing project cards -->
+            </div>
+        </section>
 
-                <div class="project-card">
-                    <div class="project-image-placeholder"></div>
-                    <h3 class="project-title">E-commerce Sales Funnel Analysis</h3>
-                    <p class="project-description">Analyzed customer behavior to identify drop-off points and recommended strategies to improve conversion rates by 15%.</p>
-                    <div class="project-tags">
-                        <span class="tag">SQL</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image-placeholder"></div>
-                    <h3 class="project-title">Public Transport Time-Series Analysis</h3>
-                    <p class="project-description">Investigated historical Berlin public transport data to uncover trends and seasonal patterns, presenting findings in an interactive dashboard.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Plotly</span>
-                        <span class="tag">Time-Series</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image-placeholder"></div>
-                    <h3 class="project-title">Interactive BI Sales Dashboard</h3>
-                    <p class="project-description">Developed a comprehensive Power BI dashboard for a global superstore, enabling managers to explore sales data and KPIs dynamically.</p>
-                    <div class="project-tags">
-                        <span class="tag">Power BI</span>
-                        <span class="tag">DAX</span>
-                        <span class="tag">Data Modeling</span>
-                    </div>
-                </div>
-
+        <section id="skills" class="skills-section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skill-tag-list">
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Storytelling</span>
+                <span class="tag">Data Cleaning</span>
             </div>
         </section>
 
         <section id="about" class="about-section">
             <h2 class="section-title">About Me</h2>
-            <p>Here you can write a paragraph about your passion for data, the tools you love to use, and what kind of internship you are looking for. Keep it concise and professional!</p>
+            <p>I'm passionate about uncovering stories hidden in data. I specialize in transforming raw information into meaningful insights using tools like Python, SQL, and Power BI. I'm currently seeking a challenging internship in analytics or BI to sharpen my skills and contribute to impactful projects.</p>
+        </section>
+
+        <section id="resume" class="resume-section">
+            <h2 class="section-title">Resume</h2>
+            <p style="text-align: center;"><a href="assets/Ansh_Dankhara_Resume.pdf" target="_blank">Download My Resume</a></p>
         </section>
 
     </main>
@@ -81,8 +77,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <script src="js/app.js"></script>
 
-    </body>
+</body>
 </html>

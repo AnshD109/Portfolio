@@ -14,8 +14,19 @@ body {
 
 main {
     max-width: 1200px;
-    margin: 0 auto; /* Center the content */
+    margin: 0 auto;
     padding: 0 2rem;
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: #007BFF;
+    width: 0%;
+    z-index: 999;
+    transition: width 0.25s ease;
 }
 
 /* --- Header & Navigation --- */
@@ -47,10 +58,9 @@ main {
     background-color: #0056b3;
 }
 
-
 /* --- Sections General Styling --- */
 section {
-    padding: 6rem 0; /* Add space between sections */
+    padding: 6rem 0;
     border-top: 1px solid #333;
 }
 
@@ -86,11 +96,10 @@ section {
     color: #aaa;
 }
 
-
 /* --- Projects Section --- */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -103,7 +112,7 @@ section {
 }
 
 .project-card:hover {
-    transform: translateY(-10px); /* Lift card on hover */
+    transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -133,13 +142,20 @@ section {
 
 .tag {
     background-color: #333;
-    color: #00BFFF; /* Deep sky blue for tags */
+    color: #00BFFF;
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 700;
 }
 
+/* --- Skills Section --- */
+.skills-section .skill-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
 /* --- About Section --- */
 .about-section p {
@@ -149,6 +165,15 @@ section {
     font-size: 1.1rem;
 }
 
+/* --- Resume Section --- */
+.resume-section a {
+    color: #007BFF;
+    font-weight: 700;
+    text-decoration: none;
+}
+.resume-section a:hover {
+    text-decoration: underline;
+}
 
 /* --- Footer --- */
 .main-footer {
