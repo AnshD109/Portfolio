@@ -10,6 +10,7 @@ body {
     background-color: #121212;
     color: #EAEAEA;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 main {
@@ -34,6 +35,11 @@ main {
     padding: 1rem 2rem;
     display: flex;
     justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    background-color: #121212;
+    z-index: 998;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .nav-link {
@@ -45,29 +51,37 @@ main {
 }
 
 .nav-link:hover {
-    color: #007BFF;
+    color: #00BFFF;
+    transform: scale(1.05);
 }
 
 .contact-button {
     background-color: #007BFF;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    transition: all 0.3s ease;
 }
+
 .contact-button:hover {
     color: #EAEAEA;
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* --- Sections General Styling --- */
 section {
     padding: 6rem 0;
     border-top: 1px solid #333;
+    position: relative;
+    z-index: 1;
 }
 
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
 }
 
 /* --- Hero Section --- */
@@ -78,15 +92,40 @@ section {
     justify-content: center;
     text-align: center;
     border-top: none;
+    position: relative;
+    background: linear-gradient(145deg, #1a1a1a, #101010);
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0,123,255,0.2), transparent);
+    animation: float 6s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
 }
 
 .main-title {
     font-size: 4rem;
     font-weight: 700;
     line-height: 1.1;
+    position: relative;
+    z-index: 1;
 }
+
 .second-line {
     color: #777;
+    z-index: 1;
+    position: relative;
 }
 
 .hero-subtitle {
@@ -94,6 +133,8 @@ section {
     max-width: 600px;
     margin: 1.5rem auto 0 auto;
     color: #aaa;
+    position: relative;
+    z-index: 1;
 }
 
 /* --- Projects Section --- */
@@ -109,6 +150,8 @@ section {
     border-radius: 8px;
     padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(50px);
+    opacity: 0;
 }
 
 .project-card:hover {
@@ -147,6 +190,11 @@ section {
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.tag:hover {
+    transform: scale(1.1);
 }
 
 /* --- Skills Section --- */
@@ -170,9 +218,11 @@ section {
     color: #007BFF;
     font-weight: 700;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 .resume-section a:hover {
     text-decoration: underline;
+    transform: scale(1.05);
 }
 
 /* --- Footer --- */
@@ -180,6 +230,7 @@ section {
     text-align: center;
     padding: 4rem 2rem;
     border-top: 1px solid #333;
+    background: #0e0e0e;
 }
 
 .main-footer a {
@@ -189,4 +240,14 @@ section {
 }
 .main-footer a:hover {
     text-decoration: underline;
+}
+
+canvas#three-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
 }
